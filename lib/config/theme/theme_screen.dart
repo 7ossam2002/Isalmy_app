@@ -41,9 +41,19 @@ class MyTheme{
       fontSize: 20,
       fontWeight: FontWeight.w400,
       color: Colors.black
-    )
+    ),
+    bodyMedium: TextStyle(color: ColorsManager.goldColor,fontSize: 20,fontWeight: FontWeight.w700),
   ),
     dividerColor: Color(0xFFB7935F),
+
+    bottomSheetTheme: BottomSheetThemeData(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(14),
+      ),
+      elevation: 18,
+      backgroundColor: Colors.white,
+
+    )
   );
 
 
