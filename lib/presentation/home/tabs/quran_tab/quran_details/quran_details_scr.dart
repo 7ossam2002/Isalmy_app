@@ -29,18 +29,21 @@ class _QuranDetailsScrState extends State<QuranDetailsScr> {
         appBar: AppBar(
           title: Text(args.suraName),
         ),
-        body: verses.isEmpty
-            ? Center(child: CircularProgressIndicator())
-            : ListView.builder(
-          // separatorBuilder: (context, index) => Container(
-          //   margin: EdgeInsets.symmetric(horizontal: 50),
-          //   color: Theme.of(context).dividerColor,
-          //   width: double.infinity,
-          //   height: 2,
-          //),
-          itemBuilder: (context, index) => VerseWidget(
-             verseItem:  verses[index]),
-          itemCount: verses.length,
+        body: Padding(
+          padding: const EdgeInsets.only(top: 40.0),
+          child: verses.isEmpty
+              ? Center(child: CircularProgressIndicator())
+              : ListView.builder(
+            // separatorBuilder: (context, index) => Container(
+            //   margin: EdgeInsets.symmetric(horizontal: 50),
+            //   color: Theme.of(context).dividerColor,
+            //   width: double.infinity,
+            //   height: 2,
+            //),
+            itemBuilder: (context, index) => VerseWidget(
+               verseItem:  verses[index]),
+            itemCount: verses.length,
+          ),
         ),
       ),
     );
