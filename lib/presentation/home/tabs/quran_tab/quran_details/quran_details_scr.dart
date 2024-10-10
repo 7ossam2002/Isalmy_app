@@ -5,6 +5,8 @@ import 'package:islamy/core/utilis/images_manager.dart';
 import 'package:islamy/presentation/home/tabs/quran_tab/quran_details/quran_widgets.dart';
 import 'package:islamy/presentation/home/tabs/quran_tab/widgets/quran_title/quran_title.dart';
 
+import '../../../../../config/theme/theme_screen.dart';
+
 class QuranDetailsScr extends StatefulWidget {
   QuranDetailsScr({super.key});
 
@@ -23,7 +25,7 @@ class _QuranDetailsScrState extends State<QuranDetailsScr> {
 
     return Container(
       decoration: BoxDecoration(
-        image: DecorationImage(image: AssetImage(ImagesManager.homeBgImage)),
+        image: DecorationImage(image: AssetImage(MyTheme.isDarkEnabled?ImagesManager.darkBg: ImagesManager.homeBgImage)),
       ),
       child: Scaffold(
         appBar: AppBar(

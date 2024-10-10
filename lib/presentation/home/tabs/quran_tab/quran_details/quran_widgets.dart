@@ -14,10 +14,11 @@ class VerseWidget extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 4,horizontal: 8),
         child: Card(
           child: Container(
+
             alignment: Alignment.center,
             child: Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: Text(verseItem,textAlign :TextAlign.center, style: Theme.of(context).textTheme.titleSmall,),
+              padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 15),
+              child: Text(verseItem,textAlign :TextAlign.center, style: Theme.of(context).textTheme.displaySmall?.copyWith(fontSize: 22),),
             ),
           ),
         ),

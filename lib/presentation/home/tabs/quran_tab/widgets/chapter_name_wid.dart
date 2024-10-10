@@ -14,7 +14,7 @@ class ChapterNameWid extends StatelessWidget {
       width: double.infinity,
       decoration: BoxDecoration(
           border: Border.symmetric(
-              horizontal: BorderSide(color: Theme.of(context).primaryColor,width: 2)
+              horizontal: BorderSide(color: Theme.of(context).dividerColor,width: 2)
           )
       ),
       child:IntrinsicHeight(
@@ -30,7 +30,7 @@ class ChapterNameWid extends StatelessWidget {
 
                   child: Center(child: Text(StringsManager.chapterName,style: Theme.of(context).textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w600,fontSize: 25,),textAlign: TextAlign.center,textDirection: TextDirection.rtl,))),
 
-              VerticalDivider(color: Theme.of(context).primaryColor,
+              VerticalDivider(color: Theme.of(context).dividerColor,
               thickness: 2,
                 width: 2,
               ),

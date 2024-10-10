@@ -18,8 +18,8 @@ class ShowLanguageBottomsheet extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("Arabic",style: Theme.of(context).textTheme.bodyMedium,),
-                Icon(Icons.check,size: 30,color: Theme.of(context).primaryColor,),
+                Text("English",style: Theme.of(context).textTheme.labelLarge,),
+                Icon(Icons.check,size: 30,),
               ],
             ),
 
@@ -28,7 +28,7 @@ class ShowLanguageBottomsheet extends StatelessWidget {
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("English",style: Theme.of(context).textTheme.bodyMedium?.copyWith(color:Colors.black),),
+                Text("Arabic",style: Theme.of(context).textTheme.displayMedium),
               ],
             ),
           ],
