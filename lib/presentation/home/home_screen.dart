@@ -61,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   Icon(Icons.settings, size: 35, color: _getIconColor(0, context)),
                   Text(
-                    "Settings",
+                    StringsManager.settingsLabel,
                     style: TextStyle(
                         color: _getIconColor(0, context),
                         fontWeight: FontWeight.bold,
@@ -85,7 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   Text(
-                    "Radio",
+                    StringsManager.radioLabel,
                     style: TextStyle(
                         color: _getIconColor(1, context),
                         fontWeight: FontWeight.bold,
@@ -109,7 +109,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   Text(
-                    "Sebha",
+                    StringsManager.tasbehLabel,
                     style: TextStyle(
                         color: _getIconColor(2, context),
                         fontWeight: FontWeight.bold,
@@ -133,7 +133,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   Text(
-                    "Hadith",
+                    StringsManager.hadithLabel,
                     style: TextStyle(
                         color: _getIconColor(3, context),
                         fontWeight: FontWeight.bold,
@@ -157,7 +157,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   Text(
-                    "Quran",
+                    StringsManager.quranLabel,
                     style: TextStyle(
                         color: _getIconColor(4, context),
                         fontWeight: FontWeight.bold,
