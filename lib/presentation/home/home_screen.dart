@@ -1,13 +1,16 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:islamy/config/theme/theme_screen.dart';
 import 'package:islamy/core/utilis/images_manager.dart';
-import 'package:islamy/core/utilis/strings_manager.dart';
 import 'package:islamy/presentation/home/tabs/hadith_tab/hadith_tab.dart';
 import 'package:islamy/presentation/home/tabs/quran_tab/quran_tab.dart';
 import 'package:islamy/presentation/home/tabs/radio_tab/radio_tab.dart';
 import 'package:islamy/presentation/home/tabs/settings_tab/settings_tab.dart';
 import 'package:islamy/presentation/home/tabs/tasbeh_tab/tasbeh_tab.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
+
+import '../../provider/settings_provider.dart';
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -30,27 +33,38 @@ class _HomeScreenState extends State<HomeScreen> {
   // Function to determine icon color based on the selected page and current theme
   Color? _getIconColor(int index, BuildContext context) {
     return _pageIndex == index
-        ? Theme.of(context).primaryColor // Use theme's icon color for selected
-        : Theme.of(context).primaryColorDark; // Unselected icon color from theme
+        ? Theme
+        .of(context)
+        .primaryColor // Use theme's icon color for selected
+        : Theme
+        .of(context)
+        .primaryColorDark; // Unselected icon color from theme
   }
 
   @override
   Widget build(BuildContext context) {
+    var provider =Provider.of<SettingsProvider>(context);
     return Container(
       decoration: BoxDecoration(
-        image: DecorationImage(image: AssetImage(MyTheme.isDarkEnabled?ImagesManager.darkBg: ImagesManager.homeBgImage)),
+        image: DecorationImage(image: AssetImage(provider.getBackgroundImage())),
       ),
       child: Scaffold(
         extendBody: true,
         backgroundColor: Colors.transparent,
         appBar: AppBar(
-          title: const Text(StringsManager.appTitle),
+          title: Text(AppLocalizations.of(context)!.appTitle),
         ),
         bottomNavigationBar: CurvedNavigationBar(
           backgroundColor: Colors.transparent,
-          color: Theme.of(context).primaryColor, // Use theme primary color
-          buttonBackgroundColor: Theme.of(context).primaryColorDark, // Use theme primary color for button
-          height: 60,
+          color: Theme
+              .of(context)
+              .primaryColor,
+          // Use theme primary color
+          height: 70,
+          buttonBackgroundColor: Theme
+              .of(context)
+              .primaryColorDark,
+          // Use theme primary color for button
           index: _pageIndex,
 
           items: [
@@ -59,9 +73,10 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: const EdgeInsets.only(top: 14),
               child: Column(
                 children: [
-                  Icon(Icons.settings, size: 35, color: _getIconColor(0, context)),
+                  Icon(Icons.settings, size: 35,
+                      color: _getIconColor(0, context)),
                   Text(
-                    StringsManager.settingsLabel,
+                    AppLocalizations.of(context)!.settingsTap,
                     style: TextStyle(
                         color: _getIconColor(0, context),
                         fontWeight: FontWeight.bold,
@@ -77,15 +92,17 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(bottom: 3, left: 3, right: 3,top: 3),
+                    padding: const EdgeInsets.only(
+                        bottom: 3, left: 3, right: 3, top: 3),
                     child: ImageIcon(
                       AssetImage(ImagesManager.radioic),
                       size: 40,
                       color: _getIconColor(1, context),
+
                     ),
                   ),
                   Text(
-                    StringsManager.radioLabel,
+                    AppLocalizations.of(context)!.radioTap,
                     style: TextStyle(
                         color: _getIconColor(1, context),
                         fontWeight: FontWeight.bold,
@@ -109,7 +126,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   Text(
-                    StringsManager.tasbehLabel,
+                    AppLocalizations.of(context)!.tasbehTap,
                     style: TextStyle(
                         color: _getIconColor(2, context),
                         fontWeight: FontWeight.bold,
@@ -133,7 +150,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   Text(
-                    StringsManager.hadithLabel,
+                    AppLocalizations.of(context)!.hadithTap,
                     style: TextStyle(
                         color: _getIconColor(3, context),
                         fontWeight: FontWeight.bold,
@@ -142,8 +159,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
             ),
-
-            // Quran Icon
             Padding(
               padding: const EdgeInsets.only(top: 4),
               child: Column(
@@ -157,7 +172,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   Text(
-                    StringsManager.quranLabel,
+                    AppLocalizations.of(context)!.quranTap,
                     style: TextStyle(
                         color: _getIconColor(4, context),
                         fontWeight: FontWeight.bold,
@@ -166,6 +181,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
             ),
+            // Quran Icon
           ],
 
           animationDuration: Duration(milliseconds: 200),

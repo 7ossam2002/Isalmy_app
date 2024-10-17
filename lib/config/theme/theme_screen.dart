@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../../core/utilis/colors_manager.dart';
 
 class MyTheme{
-  static bool isDarkEnabled=false;
+  //static bool isDarkEnabled=false;
   static final ThemeData lightTheme= ThemeData(
     
     colorScheme: ColorScheme.fromSeed(seedColor: ColorsManager.goldColor),

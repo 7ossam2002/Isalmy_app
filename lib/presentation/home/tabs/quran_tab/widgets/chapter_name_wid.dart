@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../../core/utilis/strings_manager.dart';
 
 class ChapterNameWid extends StatelessWidget {
@@ -28,7 +28,7 @@ class ChapterNameWid extends StatelessWidget {
               Expanded(
                   flex: 2,
 
-                  child: Center(child: Text(StringsManager.chapterName,style: Theme.of(context).textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w600,fontSize: 25,),textAlign: TextAlign.center,textDirection: TextDirection.rtl,))),
+                  child: Center(child: Text(AppLocalizations.of(context)!.chapterName,style: Theme.of(context).textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w600,fontSize: 25,),textAlign: TextAlign.center,textDirection: TextDirection.rtl,))),
 
               VerticalDivider(color: Theme.of(context).dividerColor,
               thickness: 2,
@@ -38,7 +38,7 @@ class ChapterNameWid extends StatelessWidget {
 
               Expanded(
                   flex: 2,
-                  child: Center(child: Text(StringsManager.numOfVerses,style: Theme.of(context).textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w600,fontSize: 25,),textAlign: TextAlign.center,textDirection: TextDirection.rtl,))),
+                  child: Center(child: Text(AppLocalizations.of(context)!.versesNumber,style: Theme.of(context).textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w600,fontSize: 25,),textAlign: TextAlign.center,textDirection: TextDirection.rtl,))),
 
             ],
           ),
