@@ -4,8 +4,13 @@ import 'package:islamy/core/utilis/colors_manager.dart';
 import 'package:islamy/presentation/home/tabs/settings_tab/widgets/show_language_bottomsheet.dart';
 import 'package:islamy/presentation/home/tabs/settings_tab/widgets/theme_bottom_sheet.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:islamy/provider/settings_provider.dart';
+
 import 'package:provider/provider.dart';
+
+import '../../../../provider/lang_provider.dart';
+import '../../../../provider/theme_provider.dart';
+
+
 
 class SettingsTab extends StatefulWidget {
   const SettingsTab({super.key});
@@ -17,7 +22,8 @@ class SettingsTab extends StatefulWidget {
 class _SettingsTabState extends State<SettingsTab> {
   @override
   Widget build(BuildContext context) {
-  var provider = Provider.of<SettingsProvider>(context);
+    var themeProvider= Provider.of<ThemeProvider>(context);
+    var langProvider= Provider.of<LangProvider>(context);
 
     return Container(
       child: Padding(
@@ -42,7 +48,7 @@ class _SettingsTabState extends State<SettingsTab> {
               ),
                 child: Padding(
                   padding: const EdgeInsets.all(14.0),
-                  child: Text(provider.currentTheme==ThemeMode.light? AppLocalizations.of(context)!.light:AppLocalizations.of(context)!.dark,style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w500)),
+                  child: Text(themeProvider.isLightTheme()? AppLocalizations.of(context)!.light:AppLocalizations.of(context)!.dark,style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w500)),
                 ),
               ),
             ),
@@ -64,8 +70,8 @@ class _SettingsTabState extends State<SettingsTab> {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.all(14.0),
-                  child: Text(provider.englishIsSelected()? AppLocalizations.of(context)!.english:AppLocalizations.of(context)!.arabic,style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w500,)),
+                  padding:  EdgeInsets.all(14.0),
+                  child: Text(langProvider.isEnglish()? AppLocalizations.of(context)!.english:AppLocalizations.of(context)!.arabic,style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w500,)),
                 ),
               ),
             ),

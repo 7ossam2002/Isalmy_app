@@ -4,4 +4,5 @@ class RoutesManager{
   static const String quranDetailsRoute='/quranDetails';
   static const String hadithDetailsRoute = '/hadithDetails';
   static const String hadithDetailsRout='/hadithDetails';
+  static const String tasbehDetailsRout='/tasbehDetails';
 }

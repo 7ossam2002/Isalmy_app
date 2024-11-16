@@ -1,9 +1,8 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
-
-import '../../../../../provider/settings_provider.dart';
+import '../../../../../provider/lang_provider.dart';
 
 class ShowLanguageBottomsheet extends StatefulWidget {
   const ShowLanguageBottomsheet({super.key});
@@ -15,7 +14,7 @@ class ShowLanguageBottomsheet extends StatefulWidget {
 class _ShowLanguageBottomsheetState extends State<ShowLanguageBottomsheet> {
   @override
   Widget build(BuildContext context) {
-    var provider = Provider.of<SettingsProvider>(context);
+    var langProvider= Provider.of<LangProvider>(context);
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
       child: Container(
@@ -26,10 +25,10 @@ class _ShowLanguageBottomsheetState extends State<ShowLanguageBottomsheet> {
             // English Language Option
             InkWell(
               onTap: () {
-                provider.changeAppLang('en');
+                langProvider.updateLanguage('en');
               },
               // If English is selected, show it as selected; otherwise, unselected
-              child: provider.englishIsSelected()
+              child: langProvider.isEnglish()
                   ? buildSelectedLanguage(AppLocalizations.of(context)!.english)
                   : buildUnSelectedLanguage(AppLocalizations.of(context)!.english),
             ),
@@ -39,10 +38,10 @@ class _ShowLanguageBottomsheetState extends State<ShowLanguageBottomsheet> {
             // Arabic Language Option
             InkWell(
               onTap: () {
-                provider.changeAppLang('ar');
+                langProvider.updateLanguage('ar');
               },
               // If Arabic is selected, show it as selected; otherwise, unselected
-              child: provider.arabicIsSelected()
+              child: !(langProvider.isEnglish())
                   ? buildSelectedLanguage(AppLocalizations.of(context)!.arabic)
                   : buildUnSelectedLanguage(AppLocalizations.of(context)!.arabic),
             ),

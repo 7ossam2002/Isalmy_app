@@ -4,6 +4,9 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islamy/provider/settings_provider.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../../provider/lang_provider.dart';
+import '../../../../../provider/theme_provider.dart';
+
 class ThemeBottomSheet extends StatefulWidget {
   const ThemeBottomSheet({super.key});
 
@@ -14,7 +17,8 @@ class ThemeBottomSheet extends StatefulWidget {
 class _ThemeBottomSheetState extends State<ThemeBottomSheet> {
   @override
   Widget build(BuildContext context) {
-    var provider = Provider.of<SettingsProvider>(context);
+    var themeProvider= Provider.of<ThemeProvider>(context);
+    var langProvider= Provider.of<LangProvider>(context);
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
       child: Container(
@@ -25,9 +29,9 @@ class _ThemeBottomSheetState extends State<ThemeBottomSheet> {
             // Light Theme Option
             InkWell(
               onTap: () {
-                provider.changeAppTheme(ThemeMode.light);
+                themeProvider.updateThemeMode(ThemeMode.light);
               },
-              child: provider.currentTheme == ThemeMode.light
+              child: themeProvider.isLightTheme()
                   ? buildSelectedThemeItem(AppLocalizations.of(context)!.light)
                   : buildUnSelectedThemeItem(AppLocalizations.of(context)!.light),
             ),
@@ -36,9 +40,9 @@ class _ThemeBottomSheetState extends State<ThemeBottomSheet> {
             // Dark Theme Option
             InkWell(
               onTap: () {
-                provider.changeAppTheme(ThemeMode.dark);
+                themeProvider.updateThemeMode(ThemeMode.dark);
               },
-              child: provider.currentTheme == ThemeMode.dark
+              child: !(themeProvider.isLightTheme())
                   ? buildSelectedThemeItem(AppLocalizations.of(context)!.dark)
                   : buildUnSelectedThemeItem(AppLocalizations.of(context)!.dark),
             ),

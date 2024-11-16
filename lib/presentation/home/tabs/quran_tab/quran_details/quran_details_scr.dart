@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:islamy/presentation/home/tabs/quran_tab/quran_details/quran_widgets.dart';
 import 'package:islamy/presentation/home/tabs/quran_tab/widgets/quran_title/quran_title.dart';
-import 'package:islamy/provider/settings_provider.dart';
 import 'package:provider/provider.dart';
+
+import '../../../../../provider/lang_provider.dart';
+import '../../../../../provider/quran_provider.dart';
+import '../../../../../provider/theme_provider.dart';
 
 class QuranDetailsScr extends StatefulWidget {
   QuranDetailsScr({super.key});
@@ -14,18 +17,23 @@ class QuranDetailsScr extends StatefulWidget {
 }
 
 class _QuranDetailsScrState extends State<QuranDetailsScr> {
-  List<String> verses = [];
+
+  
 
   @override
   Widget build(BuildContext context) {
-    var provider=Provider.of<SettingsProvider>(context);
+    var themeProvider= Provider.of<ThemeProvider>(context);
+    var langProvider= Provider.of<LangProvider>(context);
+    var quranProvider= Provider.of<QuranProvider>(context);
+
     SuraArgs args = ModalRoute.of(context)?.settings.arguments as SuraArgs;
     // Call readFile when the screen is loaded
-    readFile(args.index);
+
+   if(quranProvider.verses.isEmpty)quranProvider.readFile(args.index);
 
     return Container(
       decoration: BoxDecoration(
-        image: DecorationImage(image: AssetImage(provider.getBackgroundImage())),
+        image: DecorationImage(image: AssetImage(themeProvider.getBackgroundImage())),
       ),
       child: Scaffold(
         appBar: AppBar(
@@ -33,7 +41,7 @@ class _QuranDetailsScrState extends State<QuranDetailsScr> {
         ),
         body: Padding(
           padding: const EdgeInsets.only(top: 40.0),
-          child: verses.isEmpty
+          child: quranProvider.verses.isEmpty
               ? Center(child: CircularProgressIndicator())
               : ListView.builder(
             // separatorBuilder: (context, index) => Container(
@@ -43,22 +51,13 @@ class _QuranDetailsScrState extends State<QuranDetailsScr> {
             //   height: 2,
             //),
             itemBuilder: (context, index) => VerseWidget(
-               verseItem:  verses[index]),
-            itemCount: verses.length,
+               verseItem:  quranProvider.verses[index]),
+            itemCount: quranProvider.verses.length,
           ),
         ),
       ),
     );
   }
 
-  void readFile(int index) async {
-    // Load file and split it by lines
-    String fileContent = await rootBundle.loadString("files/${index + 1}.txt");
-    var fileLines = fileContent.split("\n");
 
-    // Update the state when the file has been loaded
-    setState(() {
-      verses = fileLines;
-    });
-  }
 }
