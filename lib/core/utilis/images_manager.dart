@@ -7,6 +7,7 @@ class ImagesManager{
   static const String radioic='images/radio.png';
   static const String headerimageicn='images/quran_header_icn.png';
   static const String hadithHeaderIm='images/hadith_header2x.png';
+  static const String darkBg='images/dark_bg.png';
 
 
 

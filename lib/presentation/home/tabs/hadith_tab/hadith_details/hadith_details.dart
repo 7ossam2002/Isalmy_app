@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:islamy/presentation/home/tabs/hadith_tab/hadith_tab.dart';
-
-import '../../../../../core/utilis/images_manager.dart';
+import 'package:provider/provider.dart';
+import '../../../../../provider/settings_provider.dart';
 
 class HadithDetails extends StatelessWidget {
   const HadithDetails({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var provider =Provider.of<SettingsProvider>(context);
     HadithItem hadith =ModalRoute.of(context)?.settings.arguments as HadithItem;();
     return Container(
       decoration: BoxDecoration(
-        image: DecorationImage(image: AssetImage(ImagesManager.homeBgImage)),
+        image: DecorationImage(image: AssetImage(provider.getBackgroundImage())),
       ),
       child: Scaffold(
       appBar: AppBar(
@@ -32,7 +33,7 @@ class HadithDetails extends StatelessWidget {
                     padding: EdgeInsets.all(15),
 
                       child: Text(
-                        hadith.content,style: TextStyle(fontSize: 20),textAlign: TextAlign.center,textDirection: TextDirection.rtl,)),
+                        hadith.content,style: Theme.of(context).textTheme.displaySmall?.copyWith(fontSize: 22),textAlign: TextAlign.center,textDirection: TextDirection.rtl,)),
                 ),
               ),
             ],

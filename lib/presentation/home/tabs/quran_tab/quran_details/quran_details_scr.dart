@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:islamy/core/utilis/images_manager.dart';
 import 'package:islamy/presentation/home/tabs/quran_tab/quran_details/quran_widgets.dart';
 import 'package:islamy/presentation/home/tabs/quran_tab/widgets/quran_title/quran_title.dart';
+import 'package:islamy/provider/settings_provider.dart';
+import 'package:provider/provider.dart';
 
 class QuranDetailsScr extends StatefulWidget {
   QuranDetailsScr({super.key});
@@ -17,30 +18,34 @@ class _QuranDetailsScrState extends State<QuranDetailsScr> {
 
   @override
   Widget build(BuildContext context) {
+    var provider=Provider.of<SettingsProvider>(context);
     SuraArgs args = ModalRoute.of(context)?.settings.arguments as SuraArgs;
     // Call readFile when the screen is loaded
     readFile(args.index);
 
     return Container(
       decoration: BoxDecoration(
-        image: DecorationImage(image: AssetImage(ImagesManager.homeBgImage)),
+        image: DecorationImage(image: AssetImage(provider.getBackgroundImage())),
       ),
       child: Scaffold(
         appBar: AppBar(
           title: Text(args.suraName),
         ),
-        body: verses.isEmpty
-            ? Center(child: CircularProgressIndicator())
-            : ListView.builder(
-          // separatorBuilder: (context, index) => Container(
-          //   margin: EdgeInsets.symmetric(horizontal: 50),
-          //   color: Theme.of(context).dividerColor,
-          //   width: double.infinity,
-          //   height: 2,
-          //),
-          itemBuilder: (context, index) => VerseWidget(
-             verseItem:  verses[index]),
-          itemCount: verses.length,
+        body: Padding(
+          padding: const EdgeInsets.only(top: 40.0),
+          child: verses.isEmpty
+              ? Center(child: CircularProgressIndicator())
+              : ListView.builder(
+            // separatorBuilder: (context, index) => Container(
+            //   margin: EdgeInsets.symmetric(horizontal: 50),
+            //   color: Theme.of(context).dividerColor,
+            //   width: double.infinity,
+            //   height: 2,
+            //),
+            itemBuilder: (context, index) => VerseWidget(
+               verseItem:  verses[index]),
+            itemCount: verses.length,
+          ),
         ),
       ),
     );
