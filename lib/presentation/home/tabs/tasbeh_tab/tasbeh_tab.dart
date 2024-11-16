@@ -27,7 +27,7 @@ class _TasbehTabState extends State<TasbehTab> {
                   children: [
                     AnimatedRotation(
                         turns: context.watch<TasbehProvider>().turns,
-                        duration: const Duration(seconds: 1),
+                        duration:  Duration(seconds: 1),
                         child: Container(
                             width: MediaQuery.of(context).size.width * 0.7,
                             height: MediaQuery.of(context).size.height * 0.5,
