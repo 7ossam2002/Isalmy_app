@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:islamy/core/utilis/colors_manager.dart';
 import 'package:islamy/core/utilis/images_manager.dart';
 import 'package:islamy/core/utilis/strings_manager.dart';
 import 'package:islamy/presentation/home/tabs/quran_tab/widgets/chapter_name_wid.dart';
@@ -39,7 +40,7 @@ class QuranTab extends StatelessWidget {
             Expanded(flex: 2,
               child: ListView.separated(
                 separatorBuilder: (context,index)=>Container(
-                  color:Color(0xFFB7935F) ,
+                  color:Theme.of(context).primaryColorLight ,
                   width: double.infinity,
                   height: 3,
                 ),

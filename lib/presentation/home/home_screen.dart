@@ -5,11 +5,11 @@ import 'package:islamy/presentation/home/tabs/hadith_tab/hadith_tab.dart';
 import 'package:islamy/presentation/home/tabs/quran_tab/quran_tab.dart';
 import 'package:islamy/presentation/home/tabs/radio_tab/radio_tab.dart';
 import 'package:islamy/presentation/home/tabs/settings_tab/settings_tab.dart';
-import 'package:islamy/presentation/home/tabs/tasbeh_tab/tasbeh_tab.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:islamy/presentation/home/tabs/tasbeh_tab/tasbeh_tab.dart';
 import 'package:provider/provider.dart';
-
-import '../../provider/settings_provider.dart';
+import '../../provider/lang_provider.dart';
+import '../../provider/theme_provider.dart';
 
 
 class HomeScreen extends StatefulWidget {
@@ -43,10 +43,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var provider =Provider.of<SettingsProvider>(context);
+    var themeProvider= Provider.of<ThemeProvider>(context);
+    var langProvider= Provider.of<LangProvider>(context);
     return Container(
       decoration: BoxDecoration(
-        image: DecorationImage(image: AssetImage(provider.getBackgroundImage())),
+        image: DecorationImage(image: AssetImage(themeProvider.getBackgroundImage())),
       ),
       child: Scaffold(
         extendBody: true,

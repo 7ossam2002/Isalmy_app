@@ -9,7 +9,8 @@ class MyTheme{
     
     colorScheme: ColorScheme.fromSeed(seedColor: ColorsManager.goldColor),
       primaryColor: ColorsManager.goldColor,
-    
+    hintColor: Colors.black,
+    hoverColor:ColorsManager.goldColor ,
       appBarTheme:  const AppBarTheme(
         iconTheme: IconThemeData(
           color: Colors.black
@@ -41,8 +42,10 @@ class MyTheme{
   focusColor: Colors.white,
   primaryColorDark: Colors.black,
   indicatorColor: Colors.white,
-
+  primaryColorLight: ColorsManager.goldColor,
   textTheme:  TextTheme(
+
+
 
     labelMedium:TextStyle(color: Colors.black),
 
@@ -111,7 +114,9 @@ class MyTheme{
     primaryColor: ColorsManager.darkBlue,
 indicatorColor: ColorsManager.darkBlue,
     primaryColorDark: ColorsManager.yellowColor,
+    hintColor: Colors.white,
 
+    hoverColor:ColorsManager.darkBlue ,
     appBarTheme:  const AppBarTheme(
       iconTheme: IconThemeData(
         color: Colors.black,
@@ -153,6 +158,8 @@ indicatorColor: ColorsManager.darkBlue,
     ),
 
     textTheme:  TextTheme(
+
+
       labelMedium:TextStyle(color: ColorsManager.yellowColor) ,
 
         labelLarge: TextStyle(
@@ -191,7 +198,7 @@ indicatorColor: ColorsManager.darkBlue,
     ),
 
 
-
+   primaryColorLight: ColorsManager.yellowColor,
     unselectedWidgetColor: Colors.white,
 
   );
