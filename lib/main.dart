@@ -8,8 +8,8 @@ import 'myapp/my_app.dart';
 void main() {
   runApp( MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => ThemeProvider(),),
-        ChangeNotifierProvider(create: (context) => LangProvider(),),
+        ChangeNotifierProvider(create: (context) => ThemeProvider()..getTheme(),),
+        ChangeNotifierProvider(create: (context) => LangProvider()..getLang(),),
         ChangeNotifierProvider(create: (context) => TasbehProvider(),)
       ],
       child: MyApp()));
